@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="mb-3">
+  <h1>Usando Flask</h1>
+  <form class="form-group" action="{{ url_for('index') }}" method="post">
+    <div class="mb-3">
+      <label class="form-label" for="content">Conteúdo</label>
+      <input class="form-control" type="text" name="content" id="content" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Adicionar</button>
+  </form>
+</section>
+<hr>
+<section>
+  <h2>Lista de Conteúdo</h2>
+  <ol class="list-group list-group-numbered">
+    {% for content in contents %}
+    <li class="list-group-item">{{ content }}</li>
+    {% endfor %}
+  </ol>
+</section>
+{% endblock content %}

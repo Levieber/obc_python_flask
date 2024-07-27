@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flask</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-5.3.3-dist/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons-1.11.3/font/bootstrap-icons.min.css')}}">
+  <script src="{{ url_for('static', filename='theme.js') }}"></script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{url_for('index')}}">AppPython</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{{url_for('index')}}">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('diary')}}">Diário</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('books')}}">Livros</a>
+            </li>
+            <li class="nav-item dropdown">
+              <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static"
+                aria-label="Trocar tema (dark)">
+                <i class="bi bi-moon-stars-fill my-1 theme-icon-active"></i>
+                <span class="d-lg-none ms-2" id="bd-theme-text">Trocar tema</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+                    aria-pressed="false">
+                    <i class="bi bi-sun-fill me-2 opacity-50"></i>
+                    Claro
+                    <i class="bi bi-check2 ms-auto d-none"></i>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center active"
+                    data-bs-theme-value="dark" aria-pressed="true">
+                    <i class="bi bi-moon-stars-fill me-2 opacity-50"></i>
+                    Escuro
+                    <i class="bi bi-check2 ms-auto d-none"></i>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto"
+                    aria-pressed="false">
+                    <i class="bi bi-circle-half me-2 opacity-50"></i>
+                    Automático
+                    <i class="bi bi-check2 ms-auto d-none"></i>
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <hr class="mt-0">
+  </header>
+  <main class="container">
+    {% block content %}
+    {% endblock content %}
+  </main>
+  <script src="{{ url_for('static', filename='bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js')}}"></script>
+</body>
+
+</html>

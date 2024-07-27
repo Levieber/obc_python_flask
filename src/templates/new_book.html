@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="mb-3">
+  <h1>Criar novo livro</h1>
+  <form class="form-group" action="{{ url_for('new_book') }}" method="post">
+    <div class="mb-3">
+      <label class="form-label" for="name">Nome</label>
+      <input class="form-control" type="text" name="name" id="name" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="description">Descrição</label>
+      <textarea class="form-control" type="text" name="description" id="description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="price">Preço</label>
+      <input type="number" class="form-control" type="text" name="price" id="price" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Adicionar</button>
+  </form>
+</section>
+{% endblock content %}

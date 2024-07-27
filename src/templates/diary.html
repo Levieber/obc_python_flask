@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="mb-3">
+  <h1>Notas dos alunos</h1>
+  <form class="form-group" action="{{ url_for('diary') }}" method="post">
+    <div class="mb-3">
+      <label class="form-label" for="name">Nome</label>
+      <input class="form-control" type="text" name="name" id="name" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="grade">Nota</label>
+      <input class="form-control" type="text" name="grade" id="grade" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Adicionar</button>
+  </form>
+</section>
+<hr>
+<section>
+  <h2>Lista de Alunos</h2>
+  <div class="accordion accordion-flush" id="students">
+    {% for student in students %}
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#flush-collapse-{{ student.name }}" aria-expanded="false" aria-controls="flush-collapse-{{ student.name }}">
+          Aluno {{ student.name }}
+        </button>
+      </h2>
+      <div id="flush-collapse-{{ student.name }}" class="accordion-collapse collapse" data-bs-parent="#students">
+        <div class="accordion-body">
+          Nota: {{ student.grade }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

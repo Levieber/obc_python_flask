@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="mb-3">
+  <h1>Atualizar livro</h1>
+  <form class="form-group" action="{{ url_for('update_book', id=book.id) }}" method="post">
+    <div class="mb-3">
+      <label class="form-label" for="name">Nome</label>
+      <input value="{{ book.name }}" class="form-control" type="text" name="name" id="name" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="description">Descrição</label>
+      <textarea class="form-control" type="text" name="description" id="description" required>{{ book.description }}</textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="price">Preço</label>
+      <input value="{{ book.price }}" type="number" class="form-control" type="text" name="price" id="price" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Atualizar</button>
+  </form>
+</section>
+{% endblock content %}
